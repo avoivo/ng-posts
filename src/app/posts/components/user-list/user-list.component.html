@@ -1,0 +1,14 @@
+<table>
+  <thead>
+    <th>User</th>
+    <th>Posts</th>
+    <th>Comments/post</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.name}}</td>
+      <td>{{user.postCount}}</td>
+      <td>{{user.commentsPerPostCount}}</td>
+    </tr>
+  </tbody>
+</table>
