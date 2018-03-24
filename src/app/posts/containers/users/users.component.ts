@@ -6,7 +6,7 @@ import "rxjs/add/observable/combineLatest";
 import "rxjs/add/operator/let";
 
 import * as fromReduces from "../../reducers";
-import * as fromActions from "../../actions";
+import * as fromActions from "../../actions/users";
 
 @Component({
   selector: "users",
@@ -30,14 +30,20 @@ export class UsersComponent implements OnInit {
     this.store.dispatch(new fromActions.Load());
   }
 
-  orderBy(orderBy: fromReduces.OrderBy) {
+  sort(orderBy: fromReduces.OrderBy) {
     switch (orderBy) {
-      case fromReduces.OrderBy.Name:
-        return this.store.dispatch(new fromActions.OrderByName());
-      case fromReduces.OrderBy.PostCount:
-        return this.store.dispatch(new fromActions.OrderByPostCount());
-      case fromReduces.OrderBy.CommentsPerPostCount:
-        return this.store.dispatch(new fromActions.OrderByCommentCount());
+      case fromReduces.OrderBy.NameAsc:
+        return this.store.dispatch(new fromActions.OrderByNameAsc());
+      case fromReduces.OrderBy.NameDesc:
+        return this.store.dispatch(new fromActions.OrderByNameDesc());
+      case fromReduces.OrderBy.PostCountAsc:
+        return this.store.dispatch(new fromActions.OrderByPostCountAsc());
+      case fromReduces.OrderBy.PostCountDesc:
+        return this.store.dispatch(new fromActions.OrderByPostCountDesc());
+      case fromReduces.OrderBy.CommentsPerPostCountAsc:
+        return this.store.dispatch(new fromActions.OrderByCommentCountAsc());
+      case fromReduces.OrderBy.CommentsPerPostCountDesc:
+        return this.store.dispatch(new fromActions.OrderByCommentCountDesc());
     }
   }
 }

@@ -1,5 +1,6 @@
 import { Address } from "./address";
 import { Company } from "./company";
+import { Post } from "./post";
 
 export class User {
   id: number;
@@ -11,7 +12,8 @@ export class User {
   website: string;
   company: Company;
 
+  posts?: Post[];
   //computables
-  postCount?: number;
+
   commentsPerPostCount?: number;
 }

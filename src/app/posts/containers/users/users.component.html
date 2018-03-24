@@ -2,4 +2,4 @@
   users works!
 </p>
 
-<user-list [users]="users$|async"></user-list>
+<user-list [users]="users$|async" [activeSorting]="orderBy$|async" (select)="sort($event)"></user-list>

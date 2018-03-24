@@ -1,13 +1,27 @@
 <table>
   <thead>
-    <th>User</th>
-    <th>Posts</th>
-    <th>Comments/post</th>
+    <th [ngSwitch]="activeSorting">
+      <user-list-header-item *ngSwitchCase="0" text="User" [direction]="1" (click)="select.emit(1)"></user-list-header-item>
+      <user-list-header-item *ngSwitchCase="1" text="User" [direction]="2" (click)="select.emit(0)"></user-list-header-item>
+      <user-list-header-item *ngSwitchDefault text="User" [direction]="0" (click)="select.emit(0)"></user-list-header-item>
+    </th>
+    <th [ngSwitch]="activeSorting">
+      <user-list-header-item *ngSwitchCase="2" text="Posts" [direction]="1" (click)="select.emit(3)"></user-list-header-item>
+      <user-list-header-item *ngSwitchCase="3" text="Posts" [direction]="2" (click)="select.emit(2)"></user-list-header-item>
+      <user-list-header-item *ngSwitchDefault text="Posts" [direction]="0" (click)="select.emit(2)"></user-list-header-item>
+    </th>
+    <th [ngSwitch]="activeSorting">
+      <user-list-header-item *ngSwitchCase="5" text="Comments/post" [direction]="1" (click)="select.emit(5)"></user-list-header-item>
+      <user-list-header-item *ngSwitchCase="4" text="Comments/post" [direction]="2" (click)="select.emit(4)"></user-list-header-item>
+      <user-list-header-item *ngSwitchDefault text="Comments/post" [direction]="0" (click)="select.emit(4)"></user-list-header-item>
+    </th>
   </thead>
   <tbody>
     <tr *ngFor="let user of users">
-      <td>{{user.name}}</td>
-      <td>{{user.postCount}}</td>
+      <td>
+        <a routerLink="/{{user.id}}">{{user.name}}</a>
+      </td>
+      <td>{{user.posts?.length}}</td>
       <td>{{user.commentsPerPostCount}}</td>
     </tr>
   </tbody>

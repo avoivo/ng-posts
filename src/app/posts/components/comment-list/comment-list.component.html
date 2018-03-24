@@ -1,0 +1,10 @@
+<section>
+  <a href="#" (click)="toggleCollapse.emit(null);$event.preventDefault()">{{comments?.length}} Comments</a>
+  <div *ngIf="!collapsed">
+    <section *ngFor="let comment of comments">
+      <h1>{{comment.name}} {{comment.email}}</h1>
+      <p>{{comment.body}}</p>
+    </section>
+  </div>
+
+</section>

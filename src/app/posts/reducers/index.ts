@@ -4,21 +4,24 @@ import {
   createSelector
 } from "@ngrx/store";
 import * as fromUsers from "./users";
+import * as fromPosts from "./posts";
 
 export { OrderBy, sortedUsersSelector } from "./users";
 
 export interface State {
   users: fromUsers.State;
+  posts: fromPosts.State;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  users: fromUsers.reducer
+  users: fromUsers.reducer,
+  posts: fromPosts.reducer
 };
 
-export const getUsersState = createFeatureSelector<State>("Users");
+export const getPostsState = createFeatureSelector<State>("Posts");
 
 export const getUsersEntitiesState = createSelector(
-  getUsersState,
+  getPostsState,
   state => state.users
 );
 
@@ -39,17 +42,69 @@ export const selectUsersTotal = createSelector(
   fromUsers.selectUsersTotal
 );
 
-export const selectUserError = createSelector(
+export const selectUsersError = createSelector(
   getUsersEntitiesState,
   fromUsers.getUsersError
 );
 
-export const selectUsersBusy = createSelector(
+export const selectUsersLoading = createSelector(
   getUsersEntitiesState,
-  fromUsers.getUsersBusy
+  fromUsers.getUsersLoading
+);
+
+export const selectUsersLoaded = createSelector(
+  getUsersEntitiesState,
+  fromUsers.getUsersLoaded
 );
 
 export const selectOrderBy = createSelector(
   getUsersEntitiesState,
   fromUsers.getOrderBy
+);
+
+export const getPostsEntitiesState = createSelector(
+  getPostsState,
+  state => state.posts
+);
+
+export const selectPostIds = createSelector(
+  getPostsEntitiesState,
+  fromPosts.selectPostIds
+);
+export const selectPostEntities = createSelector(
+  getPostsEntitiesState,
+  fromPosts.selectPostEntities
+);
+export const selectAllPosts = createSelector(
+  getPostsEntitiesState,
+  fromPosts.selectAllPosts
+);
+export const selectPostsTotal = createSelector(
+  getPostsEntitiesState,
+  fromPosts.selectPostsTotal
+);
+
+export const selectPostsError = createSelector(
+  getPostsEntitiesState,
+  fromPosts.getPostsError
+);
+
+export const selectPostsLoading = createSelector(
+  getPostsEntitiesState,
+  fromPosts.getPostsLoading
+);
+
+export const selectPostsLoaded = createSelector(
+  getPostsEntitiesState,
+  fromPosts.getPostsLoaded
+);
+
+export const selectPostUser = createSelector(
+  getPostsEntitiesState,
+  fromPosts.getUser
+);
+
+export const selectPostToggledComments = createSelector(
+  getPostsEntitiesState,
+  fromPosts.getToggledComments
 );

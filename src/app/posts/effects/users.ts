@@ -6,7 +6,7 @@ import { mergeMap, map, catchError } from "rxjs/operators";
 
 import { of } from "rxjs/observable/of";
 
-import * as fromActions from "../actions";
+import * as fromActions from "../actions/users";
 import { UserService } from "../services/user.service";
 
 @Injectable()
