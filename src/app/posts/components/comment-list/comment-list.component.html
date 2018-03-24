@@ -1,10 +1,15 @@
-<section>
-  <a href="#" (click)="toggleCollapse.emit(null);$event.preventDefault()">{{comments?.length}} Comments</a>
-  <div *ngIf="!collapsed">
-    <section *ngFor="let comment of comments">
-      <h1>{{comment.name}} {{comment.email}}</h1>
-      <p>{{comment.body}}</p>
-    </section>
+<a href="#" (click)="toggleCollapse.emit(null);$event.preventDefault()">
+  {{comments?.length}} Comments</a>
+<div class="container" *ngIf="!collapsed">
+  <div class="card" *ngFor="let comment of comments">
+    <div class="card-header">
+      {{comment.name}}
+      <a href="mailto:{{comment.email}}">{{comment.email}}</a>
+    </div>
+    <div class="card-body">
+      <blockquote class="blockquote mb-0">
+        <p>{{comment.body}}</p>
+      </blockquote>
+    </div>
   </div>
-
-</section>
+</div>

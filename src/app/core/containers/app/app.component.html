@@ -1,1 +1,19 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+
+    <ng-container *ngIf="isHome$|async; then thenTemplate; else elseTemplate"></ng-container>
+    <ng-template #thenTemplate>
+      <li class="breadcrumb-item active" aria-current="page">Users</li>
+    </ng-template>
+    <ng-template #elseTemplate>
+      <li class="breadcrumb-item">
+        <a href="#">Users</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Posts</li>
+    </ng-template>
+
+
+
+  </ol>
+</nav>
 <router-outlet></router-outlet>

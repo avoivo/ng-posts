@@ -1,5 +1,3 @@
-<p>
-  users works!
-</p>
-
-<user-list [users]="users$|async" [activeSorting]="orderBy$|async" (select)="sort($event)"></user-list>
+<div class="container">
+  <user-list [users]="users$|async" [activeSorting]="orderBy$|async" (select)="sort($event)"></user-list>
+</div>

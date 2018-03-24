@@ -1,2 +1,6 @@
-<user [user]="user$|async"></user>
-<post-list [posts]="posts$|async" [toggledComments]="toggledComments$|async" (toggleCommentCollapse)="toggleCommentCollapse($event)"></post-list>
+<div class="container">
+  <user [user]="user$|async"></user>
+</div>
+<div class="container">
+  <post-list [posts]="posts$|async" [toggledComments]="toggledComments$|async" (toggleCommentCollapse)="toggleCommentCollapse($event)"></post-list>
+</div>
